@@ -2,4 +2,4 @@ build:
 	yarn build
 
 deploy: build
-	cp -r dist /var/www/html
+	sudo cp -r dist /var/www/html
