@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "codesearch-ui"
+		},
+		{
+			"path": "codesearch-api"
+		}
+	],
+	"settings": {}
+}
