@@ -17,7 +17,7 @@ const store = new Vuex.Store({
     setQuery (state, query) {
       state.query = query
     },
-    setSearchResults (state, result) {
+    setSearchResults (state, { result }) {
       state.searchResults = result
     }
   },

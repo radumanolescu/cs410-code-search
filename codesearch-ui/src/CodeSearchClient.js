@@ -8,8 +8,9 @@ class CodeSearchClient {
   async search (query) {
     console.log(`Making rest call to get results ${query}`)
     const response = await fetch(`${this.baseUrl}/search?query=${encodeURI(query)}`)
-    const results = await response.json()
-    return results
+    const json = await response.json()
+    console.log(json)
+    return json
   }
 }
 
