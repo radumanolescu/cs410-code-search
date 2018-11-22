@@ -9,6 +9,8 @@
 
 # cs410-code-search
 
+Demo site: [http://cs410.idempotent.io](http://cs410.idempotent.io)
+
 Shared project repo for CodeSearch team, CS410-2018
 
 Team members:
