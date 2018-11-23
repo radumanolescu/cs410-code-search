@@ -1,5 +1,10 @@
 <template>
   <div class="ui container">
+  <div v-if="isPending" class="ui segment">
+    <div class="ui active dimmer inverted">
+      <div class="ui large text loader">Loading</div>
+    </div>
+  </div>
   <sui-table celled padded v-if="searchResults.length > 0">
     <sui-table-header>
       <sui-table-row>
@@ -31,7 +36,8 @@ export default {
   components: { MatchedDocument },
   computed: {
     ...mapState({
-      searchResults: state => state.searchResults
+      searchResults: state => state.searchResults,
+      isPending: state => state.isSearchPending
     })
   },
   methods: {}

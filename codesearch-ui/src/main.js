@@ -12,7 +12,8 @@ const store = new Vuex.Store({
   state: {
     query: "",
     backendStatus: {},
-    searchResults: []
+    searchResults: [],
+    isSearchPending: false,
   },
   mutations: {
     setQuery (state, query) {
@@ -23,12 +24,17 @@ const store = new Vuex.Store({
     },
     setBackendStatus (state, { backendStatus }) {
       state.backendStatus = backendStatus
-    }
+    },
+    setSearchPending (state, { isPending }) {
+      state.isSearchPending = isPending
+    },
   },
   actions: {
     async search ({ commit, state }) {
+      commit('setSearchPending', { isPending: true })
       const result = await client.search(state.query)
       commit('setSearchResults', { result })
+      commit('setSearchPending', { isPending: false })
     },
 
     async ping({ commit }) {
