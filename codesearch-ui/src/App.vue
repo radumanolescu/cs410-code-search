@@ -2,12 +2,9 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <div class="ui container">
-      <h1>Welcome to Code Search!</h1>
-      <p>
-        Search source code and formulae in one place!
-      </p>
+      <p>Search source code and formulae in one place!<backend-status /></p>
       <search-bar />
-      <div class="ui divider"></div>
+      <sui-divider />
       <search-result />
     </div>
   </div>
@@ -16,12 +13,14 @@
 <script>
 import SearchBar from './components/SearchBar.vue'
 import SearchResult from './components/SearchResult.vue'
+import BackendStatus from './components/BackendStatus.vue'
 
 export default {
   name: 'app',
   components: {
     SearchBar,
     SearchResult,
+    BackendStatus,
   },
 }
 </script>

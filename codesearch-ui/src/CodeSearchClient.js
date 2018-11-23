@@ -12,6 +12,26 @@ class CodeSearchClient {
     console.log(json)
     return json
   }
+
+  async ping () {
+    try {
+      const response = await fetch(`${this.baseUrl}/ping`)
+      if (response.status !== 200) {
+        return {
+          'status': 'NOTREADY',
+          'reason': await response.text()
+        }
+      }
+      const json = await response.json()
+      return json
+    } catch (e) {
+      console.log(e)
+      return {
+        'status': 'NOTREADY',
+        'reason': e.toString()
+      }
+    }
+  }
 }
 
 const client = new CodeSearchClient(BASE_URL)

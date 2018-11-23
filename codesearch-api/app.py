@@ -9,6 +9,13 @@ logger = logging.getLogger(__name__)
 app = flask.Flask(__name__)
 CORS(app)
 
+@app.route('/ping', methods=['GET'])
+def ping():
+    return flask.jsonify({
+        'status': 'READY',
+    })
+
+
 @app.route('/search', methods=['GET'])
 def search():
     args = flask.request.args

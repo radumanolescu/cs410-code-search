@@ -1,6 +1,6 @@
 <template>
   <div class="ui container">
-  <sui-table celled padded>
+  <sui-table celled padded v-if="searchResults.length > 0">
     <sui-table-header>
       <sui-table-row>
         <sui-table-header-cell>Relevance</sui-table-header-cell>

@@ -1,5 +1,5 @@
 <template>
-<div class="ui segment">
+<div class="ui center aligned basic segment">
   <sui-form>
     <sui-form-field>
       <sui-input placeholder="Search..." icon="search" v-on:keydown.prevent.enter="onSearch" :value="query" @input="updateQuery" />
