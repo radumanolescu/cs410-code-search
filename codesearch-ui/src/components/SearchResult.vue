@@ -14,7 +14,7 @@
           <sui-rating icon="star" v-bind:rating="result.rating" :max-rating="5" />
         </sui-table-cell>
         <sui-table-cell>
-          {{ result.content }}
+          <matched-document v-bind:text="result.content" v-bind:matchedPositions="result.matchedPositions" />
         </sui-table-cell>
       </sui-table-row>
     </sui-table-body>
@@ -24,9 +24,11 @@
 
 <script>
 import { mapState } from 'vuex'
+import MatchedDocument from './MatchedDocument.vue'
 
 export default {
   name: "search-result",
+  components: { MatchedDocument },
   computed: {
     ...mapState({
       searchResults: state => state.searchResults

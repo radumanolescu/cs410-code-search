@@ -31,7 +31,7 @@ const store = new Vuex.Store({
       commit('setSearchResults', { result })
     },
 
-    async ping({ commit, state }) {
+    async ping({ commit }) {
       const backendStatus = await client.ping()
       commit('setBackendStatus', { backendStatus })
     }
@@ -43,7 +43,7 @@ new Vue({
   store,
   created: function() {
     this.pingBackend();
-    this.timer = setInterval(this.pingBackend, 2000)
+    this.timer = setInterval(this.pingBackend, 10000)
   },
   methods: {
     pingBackend: async function() {

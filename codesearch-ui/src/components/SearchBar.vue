@@ -20,7 +20,6 @@ export default {
   },
   methods: {
     updateQuery (e) {
-      console.log(e)
       this.$store.commit('setQuery', e)
     },
     onSearch: function(event) {
