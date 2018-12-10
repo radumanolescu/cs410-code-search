@@ -6,3 +6,6 @@ clean:
 
 deploy: build clean
 	sudo cp -r dist /var/www/html
+
+dev:
+	yarn && yarn serve
