@@ -1,0 +1,1 @@
+Cannot check an empty directory into Git, so we put this dummy file here.
