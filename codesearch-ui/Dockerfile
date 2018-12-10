@@ -3,4 +3,4 @@ RUN npm install -g yarn vue-cli
 RUN mkdir /app
 ADD . /app
 WORKDIR /app
-RUN yarn build
+RUN yarn install
