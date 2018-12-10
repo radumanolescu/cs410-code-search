@@ -1,4 +1,4 @@
-package main.edu.illinois.mcsds.cs410.codesearch
+package edu.illinois.mcsds.cs410.codesearch
 
 import java.io.{File, FileInputStream}
 
