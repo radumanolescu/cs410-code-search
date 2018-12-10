@@ -1,5 +1,4 @@
-FROM python:3.6-alpine
-RUN apk add --update alpine-sdk cmake
+FROM python:3.6
 RUN pip install pipenv
 ADD . /app
 WORKDIR /app
