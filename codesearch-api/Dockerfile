@@ -1,5 +1,5 @@
 FROM python:3.6-alpine
-RUN apk add --update alpine-sdk
+RUN apk add --update alpine-sdk cmake
 RUN pip install pipenv
 ADD . /app
 WORKDIR /app
