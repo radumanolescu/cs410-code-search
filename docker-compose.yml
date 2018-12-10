@@ -13,5 +13,5 @@ services:
     volumes:
       - "./codesearch-ui:/app"
     command:
-      - yarn
-      - serve
+      - make
+      - dev
