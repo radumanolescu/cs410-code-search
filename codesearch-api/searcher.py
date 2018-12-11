@@ -28,14 +28,14 @@ class Searcher:
         """
         start = time.time()
         query = metapy.index.Document()
-        query.content(request.args['query'])
-        ranker_id = request.args['ranker']
+        query.content(request['query'])
+        ranker_id = request['ranker']
         try:
             ranker = getattr(metapy.index, ranker_id)()
         except:
             print("Couldn't make '{}' ranker, using default.".format(ranker_id))
             ranker = self.default_ranker
-        response = {'query': request.args['query'], 'results': []}
+        response = {'query': request['query'], 'results': []}
         for result in ranker.score(self.idx, query):
             response['results'].append({
                 'score': float(result[1]),
