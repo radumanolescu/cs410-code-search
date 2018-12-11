@@ -5,7 +5,7 @@
       <div class="ui large text loader">Loading</div>
     </div>
   </div>
-  <sui-table celled padded v-if="searchResults.length > 0">
+  <sui-table celled padded v-if="searchResults && searchResults.results && searchResults.results.length > 0">
     <sui-table-header>
       <sui-table-row>
         <sui-table-header-cell>Relevance</sui-table-header-cell>
@@ -14,7 +14,7 @@
     </sui-table-header>
 
     <sui-table-body>
-      <sui-table-row v-for="result in searchResults" :key="result.id">
+      <sui-table-row v-for="result in searchResults.results" :key="result.id">
         <sui-table-cell>
           <sui-rating icon="star" v-bind:rating="result.rating" :max-rating="5" />
         </sui-table-cell>
