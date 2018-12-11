@@ -21,6 +21,31 @@ class Searcher:
         self.idx = metapy.index.make_inverted_index(cfg)
         self.default_ranker = metapy.index.OkapiBM25()
 
+    def search(self, request):
+        """
+        Accept a JSON request and run the provided query with the specified
+        ranker.
+        """
+        start = time.time()
+        query = metapy.index.Document()
+        query.content(request['query'])
+        ranker_id = request['ranker']
+        try:
+            ranker = getattr(metapy.index, ranker_id)()
+        except:
+            print("Couldn't make '{}' ranker, using default.".format(ranker_id))
+            ranker = self.default_ranker
+        response = {'query': request.args['query'], 'results': []}
+        for result in ranker.score(self.idx, query):
+            response['results'].append({
+                'score': float(result[1]),
+                'rating': float(result[1]),
+                'content': self.idx.metadata(result[0]).get('content'),
+                'matchedPositions': []
+            })
+        response['elapsed_time'] = time.time() - start
+        return json.dumps(response, indent=2)
+
     def search_fake(self, request):
         logger.info("request: " + request)
         return flask.jsonify([
@@ -43,28 +68,3 @@ class Searcher:
                 'rating': 3
             }
         ])
-
-    def search(self, request):
-        """
-        Accept a JSON request and run the provided query with the specified
-        ranker.
-        """
-        start = time.time()
-        query = metapy.index.Document()
-        query.content(request['query'])
-        ranker_id = request['ranker']
-        try:
-            ranker = getattr(metapy.index, ranker_id)()
-        except:
-            print("Couldn't make '{}' ranker, using default.".format(ranker_id))
-            ranker = self.default_ranker
-        response = {'query': request['query'], 'results': []}
-        for result in ranker.score(self.idx, query):
-            response['results'].append({
-                'score': float(result[1]),
-                'rating': float(result[1]),
-                'content': self.idx.metadata(result[0]).get('content'),
-                'matchedPositions': []
-            })
-        response['elapsed_time'] = time.time() - start
-        return json.dumps(response, indent=2)
