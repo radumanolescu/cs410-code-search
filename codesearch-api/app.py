@@ -23,6 +23,8 @@ def ping():
 def search():
     args = flask.request.args
     logger.info(args)
-    # ToDo: compute the query
-    query = json.loads('{ "query" : "incompressible", "ranker": "OkapiBM25"}')
+    argLst = args.getlist('query')
+    q = ' '.join(argLst)
+    logger.info(q)
+    query = json.loads('{ "query" : q, "ranker": "OkapiBM25"}')
     return searcher.search(query)
