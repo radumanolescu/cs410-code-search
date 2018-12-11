@@ -26,5 +26,5 @@ def search():
     argLst = args.getlist('query')
     q = ' '.join(argLst)
     logger.info(q)
-    query = json.loads('{ "query" : {q}, "ranker": "OkapiBM25"}'.format(q=q))
+    query = '{ "query" : q, "ranker": "OkapiBM25"}'
     return searcher.search(query)
