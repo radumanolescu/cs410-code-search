@@ -21,7 +21,7 @@ class Searcher:
         self.idx = metapy.index.make_inverted_index(cfg)
         self.default_ranker = metapy.index.OkapiBM25()
 
-    def search(self, request):
+    def search_fake(self, request):
         logger.info("request: " + request)
         return flask.jsonify([
             {
@@ -44,7 +44,7 @@ class Searcher:
             }
         ])
 
-    def search_for_real(self, request):
+    def search(self, request):
         """
         Accept a JSON request and run the provided query with the specified
         ranker.
@@ -62,6 +62,7 @@ class Searcher:
         for result in ranker.score(self.idx, query):
             response['results'].append({
                 'score': float(result[1]),
+                'rating': float(result[1]),
                 'content': self.idx.metadata(result[0]).get('content'),
                 'matchedPositions': []
             })
