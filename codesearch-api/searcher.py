@@ -28,8 +28,8 @@ class Searcher:
         """
         start = time.time()
         query = metapy.index.Document()
-        query.content(request['query'])
-        ranker_id = request['ranker']
+        query.content(request.args['query'])
+        ranker_id = request.args['ranker']
         try:
             ranker = getattr(metapy.index, ranker_id)()
         except:
