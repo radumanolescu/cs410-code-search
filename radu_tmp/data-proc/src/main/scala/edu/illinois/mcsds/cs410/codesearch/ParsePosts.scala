@@ -12,7 +12,7 @@ object ParsePosts {
   val mathFileName = "/Users/Radu Manolescu/-/Study/MCS-DS/CS-410/prj/data/math.stackexchange.com/Posts.xml" // 2372549
   val oflwFileName = "/Users/Radu Manolescu/-/Study/MCS-DS/CS-410/prj/data/stackoverflow.com/Posts.xml"
   val dataFileName = "/Users/Radu Manolescu/-/Study/MCS-DS/CS-410/prj/data/stackexchange.dat"
-  val MaxElem = 5000
+  val MaxElem = 10000
 
   def main(args: Array[String]): Unit = {
     implicit val pw = new PrintWriter(new File(dataFileName))
@@ -20,7 +20,7 @@ object ParsePosts {
       writePosts(xmlPosts)
     }
     pw.close()
-    println("Done: ")
+    println("Done")
   }
 
   def writePosts(xmlPosts: File)(implicit pw: PrintWriter): Unit = {
@@ -40,10 +40,17 @@ object ParsePosts {
           val value = xsr.getAttributeValue(i)
           if (localName == "Body") {
             val doc: Document = Jsoup.parse(value)
-            pw.write(doc.text()) // Keep the parentheses else "ambiguous reference to overloaded definition"
+            // Keep the parentheses in doc.text() else "ambiguous reference to overloaded definition"
+            val s = doc.text()
+              .replaceAll("\r", "")
+              .replaceAll("\n", "\\n")
+              .trim
+            if (!s.isBlank) {
+              pw.write(s + "\n")
+              numElem += 1
+            }
           }
         }
-        numElem += 1
       }
     }
   }
