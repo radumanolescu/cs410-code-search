@@ -18,3 +18,21 @@ Team members:
 * Kevin Jing Qiu (kevinjqiu, jingq2@illinois.edu)  - coordinator
 * David Landrith (davidlandrith, dkl2@illinois.edu)
 * Radu Manolescu (radumanolescu, radufm2@illinois.edu)
+
+# How to run with docker
+
+* First you need to install [docker](https://docker.io) for your distribution.
+* Next, install [docker-compose](https://docs.docker.com/compose/install/).  If you have python/pip, it's as simple as `pip install docker-compose`.
+* `cd` into the directory where `docker-compose.yml` is, and then:
+
+    docker-compose up -d
+
+You can check the logs:
+
+    docker-compose logs
+
+After the containers are up, the API server will be available at `http://localhost:8081` and the UI will be available at `http://localhost:8080`.  You can change those values in the `docker-compose.yml` file.
+
+This docker-compose file is using volume mounting so the code change in the local folder will be reflected in the container, however, you need to restart the containers in order to make those changes take effect:
+
+    docker-compose restart
