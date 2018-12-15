@@ -2,12 +2,18 @@
 <div class="ui center aligned basic segment">
   <sui-form>
     <sui-form-field>
-      <sui-input placeholder="Input search term here.  Use $$...$$ for formula search." icon="search" v-on:keydown.prevent.enter="onSearch" :value="query" @input="updateQuery" />
+      <sui-input placeholder="Input search term here.  Use $$...$$ for formula search."
+        icon="search"
+        v-on:keydown.prevent.enter="onSearch"
+        :value="query"
+        @input="updateQuery" />
       <sui-button-group class="latex-button-group">
         <latex-helper-button
           formula="$$x^y$$"
-          :handleFormulaClick="() => handleFormulaClick('$$x^y$$')" />
-        <latex-helper-button formula="$$\sqrt{x}$$" :handleFormulaClick="handleFormulaClick" />
+          :handleFormulaClick="handleFormulaClick" />
+        <latex-helper-button
+          formula="$$\sqrt{x}$$"
+          :handleFormulaClick="handleFormulaClick" />
       </sui-button-group>
     </sui-form-field>
   </sui-form>
@@ -35,8 +41,10 @@ export default {
     onSearch: function(e) {
       this.$store.dispatch('search')
     },
-    handleFormulaClick: function(x) {
-      console.log(x);
+    handleFormulaClick: function(formula) {
+      let q = this.$store.state.query;
+      q += formula
+      this.updateQuery(q);
     }
   }
 }

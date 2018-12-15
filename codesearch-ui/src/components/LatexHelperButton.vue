@@ -1,5 +1,5 @@
 <template>
-    <sui-button compact v-on:click.prevent="handleFormulaClick"><mathjax :formula="formula"></mathjax></sui-button>
+    <sui-button compact v-on:click.prevent="() => handleFormulaClick(formula)"><mathjax :formula="formula"></mathjax></sui-button>
 </template>
 
 <script>
