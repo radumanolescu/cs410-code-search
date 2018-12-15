@@ -4,7 +4,7 @@ class CodeRanker(metapy.index.RankingFunction):
 
     def __init__(self, default_ranker):
         self.default_ranker = default_ranker
-        self.weights = [ # weight = number of times the words should be repeated in the query, in
+        self.keywords = [ # weight = number of times the words should be repeated in the query, in
             # Java
             "abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class", "const", "continue",
             "default", "double", "do", "else", "enum", "extends", "false", "final", "finally", "float", "for", "goto",
@@ -49,7 +49,7 @@ class CodeRanker(metapy.index.RankingFunction):
         line = query.content()
         weight = 2
 
-        for word in self.weights:
+        for word in self.keywords:
             if word in line:
                 line += (' ' + word) * weight
         query.content(line)
