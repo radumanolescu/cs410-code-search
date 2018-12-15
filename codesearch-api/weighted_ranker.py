@@ -6,31 +6,11 @@ class CodeRanker(metapy.index.RankingFunction):
         self.default_ranker = default_ranker
         self.weights = { # weight = number of times the words should be repeated in the query, in
             # Java
-            "double":  2,
-            "do": 2,
-            "else": 2,
-            "for": 2,
-            "if": 2,
-            "this": 2,
-            "while": 2,
-            # C -- no unique reserved words
-            # C++
-            "and": 1,
-            "or": 1,
-            "not": 2,
-            # Python
-            "is": 2,
-            "from": 2,
-            "with": 2,
-            "as": 2,
-            "except": 2,
-            "in": 2,
-            # Ruby
-            "next": 2,
-            "then": 2,
-            "unless": 2,
-            "until": 2,
-            "when": 2
+            "abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class", "const", "continue",
+            "default", "double", "do", "else", "enum", "extends", "false", "final", "finally", "float", "for", "goto",
+            "if", "implements", "import", "instanceof", "int", "interface", "long", "native", "new", "null", "package",
+            "private", "protected", "public", "return", "short", "static", "strictfp", "super", "switch",
+            "synchronized", "this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while", "double"
         }
 
         super(CodeRanker, self).__init__()
@@ -38,8 +18,9 @@ class CodeRanker(metapy.index.RankingFunction):
     def score(self, idx, query, top_k):
 
         line = query.content()
+        weight = 2
 
-        for word, weight in self.synonyms.items():
+        for word in self.weights.items():
             if word in line:
                 line += (' ' + word) * weight
         query.content(line)
