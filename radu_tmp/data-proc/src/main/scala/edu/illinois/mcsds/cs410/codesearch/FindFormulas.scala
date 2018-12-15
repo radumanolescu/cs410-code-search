@@ -11,6 +11,9 @@ import uk.ac.ed.ph.snuggletex.{SnuggleEngine, SnuggleInput}
 import scala.collection.mutable
 import scala.util.control.NonFatal
 import scala.xml.{Node, XML}
+import java.math.BigInteger
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 object FindFormulas {
   System.setProperty("jdk.xml.totalEntitySizeLimit", String.valueOf(Integer.MAX_VALUE))
@@ -22,6 +25,7 @@ object FindFormulas {
   val latex = mutable.Set.empty[String]
   val engine = new SnuggleEngine()
   val session = engine.createSession()
+  val md5 = MessageDigest.getInstance("MD5")
   implicit val pw = new PrintWriter(new File(dataFileName))
 
   def main(args: Array[String]): Unit = {
