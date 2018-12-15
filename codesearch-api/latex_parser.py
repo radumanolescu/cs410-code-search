@@ -15,8 +15,9 @@ def latex_to_csx(latex_formula):
         latex_formula = latex_formula[1:-1]
     if latex_formula.startswith('$') and latex_formula.endswith('$'):
         latex_formula = latex_formula[1:-1]
+
     words = [
-        'CSX_{}'.format(transform_digest(hashlib.md5(w).hexdigest()[:5].upper())) for w in
+        'CSX{}'.format(transform_digest(hashlib.md5(w).hexdigest()[:5].upper())) for w in
         re.split(r'\s|\\', latex_formula)
         if w
     ]
