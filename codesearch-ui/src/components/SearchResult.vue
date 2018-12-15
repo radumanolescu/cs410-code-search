@@ -40,6 +40,5 @@ export default {
       isPending: state => state.isSearchPending
     })
   },
-  methods: {}
 };
 </script>

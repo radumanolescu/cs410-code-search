@@ -33,7 +33,6 @@ am
 among
 amongst
 an
-and
 another
 any
 anybody
@@ -45,7 +44,6 @@ anywhere
 apart
 are
 around
-as
 at
 av
 be
@@ -78,19 +76,16 @@ cos
 could
 cu
 day
-do
 does
 doesn't
 doing
 dost
 doth
-double
 down
 dual
 during
 each
 either
-else
 elsewhere
 enough
 et
@@ -102,7 +97,6 @@ everybody
 everyone
 everything
 everywhere
-except
 excepted
 excepting
 exception
@@ -115,11 +109,9 @@ farthest
 few
 ff
 first
-for
 formerly
 forth
 forward
-from
 front
 further
 furthermore
@@ -157,8 +149,6 @@ however
 howsoever
 i
 ie
-if
-in
 inasmuch
 inc
 include
@@ -172,7 +162,6 @@ instead
 into
 inward
 inwards
-is
 it
 its
 itself
@@ -212,7 +201,6 @@ need
 neither
 never
 nevertheless
-next
 no
 nobody
 none
@@ -220,7 +208,6 @@ nonetheless
 noone
 nope
 nor
-not
 nothing
 notwithstanding
 now
@@ -235,7 +222,6 @@ once
 one
 only
 onto
-or
 other
 others
 otherwise
@@ -311,7 +297,6 @@ thee
 their
 them
 themselves
-then
 thence
 thenceforth
 there
@@ -327,7 +312,6 @@ thereto
 thereupon
 these
 they
-this
 those
 thou
 though
@@ -348,9 +332,7 @@ ugh
 unable
 under
 underneath
-unless
 unlike
-until
 up
 upon
 upward
@@ -371,7 +353,6 @@ were
 what
 whatever
 whatsoever
-when
 whence
 whenever
 whensoever
@@ -398,7 +379,6 @@ whew
 which
 whichever
 whichsoever
-while
 whilst
 whither
 who
@@ -413,7 +393,6 @@ whosoever
 why
 will
 wilt
-with
 within
 without
 worse

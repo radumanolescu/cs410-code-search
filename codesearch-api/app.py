@@ -2,7 +2,8 @@ import json
 import flask
 import logging
 from flask_cors import CORS
-from searcher import Searcher
+# from searcher import Searcher
+from searcher import StubSearcher as Searcher
 
 logging.basicConfig(level='INFO')
 

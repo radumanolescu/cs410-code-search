@@ -1,12 +1,16 @@
 <template>
-  <span v-html="renderedText">
-  </span>
+  <mathjax :formula="renderedText"></mathjax>
 </template>
 
 <script>
+import MathJax from './MathJax.vue'
+
 export default {
   name: "matched-document",
   props: ["text", "matchedPositions"],
+  components: {
+    'mathjax': MathJax
+  },
   computed: {
     renderedText: function() {
       const result = [];
