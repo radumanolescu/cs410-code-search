@@ -7,13 +7,8 @@
         v-on:keydown.prevent.enter="onSearch"
         :value="query"
         @input="updateQuery" />
-      <sui-button-group class="latex-button-group">
-        <latex-helper-button
-          formula="$$x^y$$"
-          :handleFormulaClick="handleFormulaClick" />
-        <latex-helper-button
-          formula="$$\sqrt{x}$$"
-          :handleFormulaClick="handleFormulaClick" />
+      <sui-button-group class="latex-button-group" v-for="formula in predefinedFormulae" v-bind:key="formula">
+        <latex-helper-button :formula="formula" :handleFormulaClick="handleFormulaClick" />
       </sui-button-group>
     </sui-form-field>
   </sui-form>
@@ -26,6 +21,11 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'search-bar',
+  data: function() {
+    return {
+      predefinedFormulae: ["$$x^y$$", "$$\\sqrt[y]{x}$$"]
+    }
+  },
   computed: {
     ...mapState({
       query: state => state.query
