@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import MathJax from './components/MathJax.vue'
 import SearchBar from './components/SearchBar.vue'
 import SearchResult from './components/SearchResult.vue'
 import BackendStatus from './components/BackendStatus.vue'
@@ -18,6 +19,7 @@ import BackendStatus from './components/BackendStatus.vue'
 export default {
   name: 'app',
   components: {
+    MathJax,
     SearchBar,
     SearchResult,
     BackendStatus,
