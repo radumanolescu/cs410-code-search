@@ -12,6 +12,13 @@ class CodeSearchClient {
     console.log(json)
     return json
   }
+  async codesearch (query) {
+    console.log(`Making rest call to get results weighted for language keywords ${query}`)
+    const response = await fetch(`${this.baseUrl}/codesearch?query=${encodeURI(query)}`)
+    const json = await response.json()
+    console.log(json)
+    return json
+  }
 
   async ping () {
     try {

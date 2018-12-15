@@ -37,6 +37,13 @@ const store = new Vuex.Store({
       commit('setSearchPending', { isPending: false })
     },
 
+    async codesearch ({ commit, state }) {
+      commit('setSearchPending', { isPending: true })
+      const result = await client.codesearch(state.query)
+      commit('setSearchResults', { result })
+      commit('setSearchPending', { isPending: false })
+    },
+
     async ping({ commit }) {
       const backendStatus = await client.ping()
       commit('setBackendStatus', { backendStatus })

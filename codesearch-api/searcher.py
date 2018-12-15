@@ -4,6 +4,7 @@ import metapy
 import flask
 from flask_cors import CORS
 import logging
+from weighted_ranker import CodeRanker
 
 logging.basicConfig(level='INFO')
 logger = logging.getLogger(__name__)
@@ -45,6 +46,11 @@ class Searcher:
             })
         response['elapsed_time'] = time.time() - start
         return json.dumps(response, indent=2)
+
+class WeightedSearcher(Searcher):
+    def __init__(self, cfg):
+        self.default_ranker_ranker = CodeRanker(self.default_ranker)
+        super(WeightedSearcher, self).__init__(cfg)
 
 
 class StubSearcher:
