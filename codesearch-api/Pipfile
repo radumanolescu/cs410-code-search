@@ -9,7 +9,5 @@ flask-cors = "*"
 metapy = "*"
 gunicorn = "*"
 
-[dev-packages]
-
 [requires]
 python_version = "3.6"
