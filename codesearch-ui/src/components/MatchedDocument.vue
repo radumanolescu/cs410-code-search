@@ -1,7 +1,5 @@
 <template>
-<span>
   <mathjax :formula="renderedText"></mathjax>
-</span>
 </template>
 
 <script>

@@ -15,6 +15,7 @@ import MathJax from './components/MathJax.vue'
 import SearchBar from './components/SearchBar.vue'
 import SearchResult from './components/SearchResult.vue'
 import BackendStatus from './components/BackendStatus.vue'
+import LatexHelperButton from './components/LatexHelperButton.vue'
 
 export default {
   name: 'app',
@@ -23,6 +24,7 @@ export default {
     SearchBar,
     SearchResult,
     BackendStatus,
+    LatexHelperButton,
   },
 }
 </script>
