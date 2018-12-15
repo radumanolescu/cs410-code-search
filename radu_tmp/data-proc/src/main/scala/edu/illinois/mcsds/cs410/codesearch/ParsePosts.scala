@@ -1,10 +1,13 @@
 package edu.illinois.mcsds.cs410.codesearch
 
 import java.io.{File, FileInputStream, PrintWriter}
+import java.util.regex.Pattern
 
 import javax.xml.stream.XMLInputFactory
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+
+import scala.collection.mutable
 
 object ParsePosts {
   System.setProperty("jdk.xml.totalEntitySizeLimit", String.valueOf(Integer.MAX_VALUE))
@@ -46,12 +49,46 @@ object ParsePosts {
               .replaceAll("\n", "\\n")
               .trim
             if (!s.isBlank) {
-              pw.write(s + "\n")
+              augmentFormulas(s)
               numElem += 1
             }
           }
         }
       }
     }
+  }
+
+  def augmentFormulas(line: String)(implicit pw: PrintWriter): Unit = {
+    if (line.indexOf('$') >= 0) {
+      val s = line
+        .replaceAll(Pattern.quote("$."), "\\$ .")
+        .replaceAll(Pattern.quote("$,"), "\\$ ,")
+        .replaceAll(Pattern.quote("$;"), "\\$ ;")
+        .replaceAll(Pattern.quote("$)"), "\\$ )")
+        .replaceAll(Pattern.quote("$?"), "\\$ ?")
+        .trim
+      val words = s.split(" ")
+      var inFormula = false
+      val augmented = mutable.ArrayBuffer.empty[String]
+      val formula = mutable.ArrayBuffer.empty[String]
+      words.foreach { word =>
+        augmented += word
+        if (word.startsWith("$")) inFormula = true
+        if (inFormula) formula += word
+        if (word.endsWith("$")) {
+          inFormula = false
+          if (formula.length > 0) {
+            val fml = formula.mkString(" ")
+            val terms = fml.split("\\s|\\\\").filterNot(_.isEmpty).map("CSX" + _)
+            augmented ++= terms
+          }
+          formula.clear
+        }
+      }
+      pw.write(augmented.mkString("", " ", "\n"))
+    } else {
+      pw.write(line + "\n")
+    }
+
   }
 }

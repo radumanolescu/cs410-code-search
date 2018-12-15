@@ -23,7 +23,7 @@ object Translate {
     for {
       c <- ' ' to '~'
     } {
-      if (!Character.isAlphabetic(c) && !Character.isDigit(c)) {
+      if (!Character.isAlphabetic(c)) {
         val d1_d2 = inc(d1, d2)
         d1 = d1_d2._1
         d2 = d1_d2._2

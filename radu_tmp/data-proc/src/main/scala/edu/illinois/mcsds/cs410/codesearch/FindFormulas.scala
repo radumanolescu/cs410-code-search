@@ -18,7 +18,7 @@ object FindFormulas {
   val mathFileName = "/Users/Radu Manolescu/-/Study/MCS-DS/CS-410/prj/data/math.stackexchange.com/Posts.xml" // 2372549
   val oflwFileName = "/Users/Radu Manolescu/-/Study/MCS-DS/CS-410/prj/data/stackoverflow.com/Posts.xml"
   val dataFileName = "/Users/Radu Manolescu/-/Study/MCS-DS/CS-410/prj/data/formulas.txt"
-  val MaxElem = 100
+  val MaxElem = 10000
   val latex = mutable.Set.empty[String]
   val engine = new SnuggleEngine()
   val session = engine.createSession()
@@ -81,8 +81,8 @@ object FindFormulas {
                   val csx = xml2csx(l2x)
                   if (!csx.isEmpty) {
                     pw.println(fml)
-                    pw.println(l2x)
-                    pw.println(csx + "\n")
+//                    pw.println(l2x)
+//                    pw.println(csx + "\n")
                   }
                   val x = l2x.replaceAll("<", " <").replaceAll(">", "> ")
                     .split(" ").filter(s => s.startsWith("<") && !s.startsWith("</"))
