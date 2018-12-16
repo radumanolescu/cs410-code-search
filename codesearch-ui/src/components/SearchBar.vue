@@ -11,6 +11,7 @@
           <sui-button icon="superscript" color="green" v-on:click.prevent="onSearch">Formula</sui-button>
           <sui-button icon="code" v-on:click.prevent="onCodeSearch">Code</sui-button>
         </div>
+        Sample Formulae
         <sui-button-group
           class="latex-button-group"
           v-for="formula in predefinedFormulae"
@@ -37,11 +38,12 @@ export default {
         "$$\\binom{n}{k}$$",
         "$$\\frac{x}{y}$$",
         "$$\\int_{a}^{b}$$",
-        "$$\\iint_V \\mu(u,v) \\,du\\,dv$$",
         "$$\\sum_{n=1}^{\\infty}$$",
-        "$$\\alpha$$",
-        "$$\\beta$$",
-        "$$\\gamma$$",
+        "$$e^{i \\pi}+1=0$$",
+        "$$\\vec p_1\\cdot \\vec p_2 = |\\vec p_1| \\cdot |\\vec p_2| \\cdot \\cos \\theta$$",
+        "$$\\frac{1}{2}\\pi R^2$$",
+        "$$\\frac{1}{2}L^2(\\alpha-\\sin\\alpha)+\\frac{1}{2}R^2(\\beta-\\sin\\beta)=R^2(\\frac{1}{2}(L/R)^2((\\pi-2\\theta)-\\sin(\\pi-2\\theta))+\\frac{1}{2}(4\\theta-\\sin(4\\theta)))$$",
+        "$$\\pi+\\alpha\\cos\\alpha-\\sin\\alpha$$",
       ]
     };
   },
