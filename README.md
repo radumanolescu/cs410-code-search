@@ -68,7 +68,7 @@ Contributions
     * Code search implementation
       * Remove programming language keywords from stop words
       * Implement ranker class to boost rankings of keywords from common programming languages in search engine (viz., Java, C, C++, Python, Ruby, PHP, Perl)
-      * Configuration to suit computer language keyword searching 
+      * Optimize configuration for computer language keyword searching 
 
 Important files and directories
 =============
