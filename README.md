@@ -37,3 +37,19 @@ After the containers are up, the API server will be available at `http://localho
 This docker-compose file is using volume mounting so the code change in the local folder will be reflected in the container, however, you need to restart the containers in order to make those changes take effect:
 
     docker-compose restart
+
+Contributions
+=============
+
+#### Kevin Qiu (jingq2@illinois.edu)
+
+* Project setup
+    ** Project bootstrapping (frontend+backend)
+    ** dockerfile, docker-compose and deployment automation
+* Frontend
+    ** UI/UX design/implementation
+    ** LaTex formula button / Document rendering with formula (integration with MathJAX)
+* Backend
+    ** Search API schema
+    ** Implemented LaTex to CSX translation
+    ** Implemented parsing of raw search query to search terms
