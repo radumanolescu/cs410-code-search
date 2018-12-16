@@ -66,3 +66,33 @@ Contributions
 #### David K Landrith (dkl2@illinois.edu)
 * Backend
     * Code search: remove programming language keywords from stop words, boost their ranking in the search engine
+
+Important files and directories
+=============
+#### ./codesearch-api
+* Website back end, contains Python code to search in the MeTA index
+#### ./codesearch-api/idx/inv
+* MeTA inverted index. If you make changes to the corpus or the config file, remove this directory. It will be re-generated when needed.
+#### ./codesearch-api/stackexchange
+* Contains the corpus and files that can be used to test and debug the site
+    * line.toml - File describing the corpus
+    * stackexchange.dat - MeTA line format corpus
+    * SampleFormulas.txt - sample LaTeX formulas known to exist in the corpus
+    * FormulasCsxJava.txt, FormulasCsxPython.txt - CSX encodings of the formulas from SampleFormulas.txt, done through pre-processor and search engine. Must be identical.
+#### ./codesearch-ui
+* Web app front end
+#### ./codesearch-ui/public
+* Web app static assets, e.g. the app front (and only) page
+#### ./codesearch-ui/src
+* Web app logic, coded in JavaScript
+#### ./codesearch-ui/src/components
+* Web app logic, coded in JavaScript, using the Vue framework
+#### ./pre_proc/data-proc
+* Data pre-processing utility, written in Scala
+    * Reads the input files
+    * Extracts the posts
+    * Finds the formulas and computes the CSX representation of the formulas
+    * Writes the post text, formulas and CSX representation into the corpus
+    * To execute, open build.sbt as a project file in IntelliJ
+    * CsxEncoder.scala implements the CSX encoding for the pre-processor
+    * ParsePosts.scala is the pre-processor, used to create the corpus
