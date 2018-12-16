@@ -2,6 +2,7 @@ import json
 import flask
 import logging
 import re
+from latex_parser import latex_to_csx
 from flask_cors import CORS
 from searcher import Searcher
 from searcher import WeightedSearcher
@@ -22,18 +23,17 @@ def ping():
 
 def parse_query(query):
     """Parse the query string, convert to CSX tokens if the query term is latex"""
-    from latex_parser import latex_to_csx
     remaining = str(query)
     modified_query = ""
     while len(remaining) > 0:
-        m = re.search(r'\$(.+?)\$', query)
+        m = re.search(r'\$(.+?)\$', remaining)
         if m:
             modified_query += remaining[:m.start()]
             csx_tokens = latex_to_csx(m.group(1))
             modified_query += csx_tokens
             remaining = remaining[m.end()+1:]
         else:
-            modified_query += remaining
+            modified_query += " " + remaining
             remaining = ""
     return modified_query
 

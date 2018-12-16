@@ -11,10 +11,6 @@ def transform_digest(digest):
 
 
 def latex_to_csx(latex_formula):
-    # if latex_formula.startswith('$') and latex_formula.endswith('$'):
-    #     latex_formula = latex_formula[1:-1]
-    # if latex_formula.startswith('$') and latex_formula.endswith('$'):
-    #     latex_formula = latex_formula[1:-1]
     words = [
         'CSX{}'.format(transform_digest(hashlib.md5(w.encode('utf-8')).hexdigest()[:5].upper())) for w in
         re.split(r'\s|\\', latex_formula)
