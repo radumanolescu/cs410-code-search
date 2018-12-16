@@ -44,12 +44,12 @@ Contributions
 #### Kevin Qiu (jingq2@illinois.edu)
 
 * Project setup
-    ** Project bootstrapping (frontend+backend)
-    ** dockerfile, docker-compose and deployment automation
+    * Project bootstrapping (frontend+backend)
+    * dockerfile, docker-compose and deployment automation
 * Frontend
-    ** UI/UX design/implementation
-    ** LaTex formula button / Document rendering with formula (integration with MathJAX)
+    * UI/UX design/implementation
+    * LaTex formula button / Document rendering with formula (integration with MathJAX)
 * Backend
-    ** Search API schema
-    ** Implemented LaTex to CSX translation
-    ** Implemented parsing of raw search query to search terms
+    * Search API schema
+    * Implemented LaTex to CSX translation
+    * Implemented parsing of raw search query to search terms
