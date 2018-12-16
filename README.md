@@ -53,3 +53,16 @@ Contributions
     * Search API schema
     * Implemented LaTex to CSX translation
     * Implemented parsing of raw search query to search terms
+#### Radu Manolescu (radufm2@illinois.edu)
+* Data pre-processor
+    * Design and implementation
+* CSX encoding
+    * Concept and original algorithm
+    * Implemented LaTex to CSX translation
+* Backend
+    * MeTA line corpus design
+    * processing of raw input to MeTA line corpus
+    * Implementation of Python searcher using metapy
+#### David K Landrith (dkl2@illinois.edu)
+* Backend
+    * Code search: remove programming language keywords from stop words, boost their ranking in the search engine
