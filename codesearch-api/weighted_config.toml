@@ -8,7 +8,7 @@ dataset = "stackexchange"
 # Corpus configuration file: $dataset/$corpus
 corpus = "line.toml"
 # Directory for the index
-index = "idx"
+index = "weighted_idx"
 
 uninvert = true # create the forward index by un-inverting the
                 # inverted index; can save some processing time
@@ -17,9 +17,9 @@ uninvert = true # create the forward index by un-inverting the
 [[analyzers]]
 method = "ngram-word"
 ngram = 1
-filter = [{type = "icu-tokenizer"}]
+filter = "default-unigram-chain"
 
 [[analyzers]]
 method = "ngram-word"
 ngram = 2
-filter = [{type = "icu-tokenizer"}]
+filter = "default-chain" #[{type = "icu-tokenizer"}]

@@ -59,7 +59,7 @@ class CodeRanker(metapy.index.RankingFunction):
             "SQLIntegrityConstraintViolationException", "SQLInvalidAuthorizationSpecException",
             "SQLNonTransientConnectionException", "SQLNonTransientException", "SQLRecoverableException",
             "SQLSyntaxErrorException", "SQLTimeoutException", "SQLTransactionRollbackException",
-            "SQLTransientConnectionException", "SQLTransientException", "SQLWarning",
+            "SQLTransientConnectionException", "SQLTransientException", "SQLWarning", "JDBC"
             # C
             "auto", "break", "case", "char", "const", "continue", "default", "do", "double", "else", "enum", "extern",
             "float", "for", "goto", "if", "inline", "int", "long", "register", "restrict", "return", "short", "signed",
