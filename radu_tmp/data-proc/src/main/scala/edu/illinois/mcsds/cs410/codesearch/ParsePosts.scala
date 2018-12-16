@@ -8,6 +8,7 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 
 import scala.collection.mutable
+import CsxEncoder.latexToCsx
 
 object ParsePosts {
   System.setProperty("jdk.xml.totalEntitySizeLimit", String.valueOf(Integer.MAX_VALUE))
@@ -78,9 +79,8 @@ object ParsePosts {
         if (word.endsWith("$")) {
           inFormula = false
           if (formula.length > 0) {
-            val fml = formula.mkString(" ")
-            val terms = fml.split("\\s|\\\\").filterNot(_.isEmpty).map("CSX" + _)
-            augmented ++= terms
+            val latex = formula.mkString(" ")
+            augmented += latexToCsx(latex)
           }
           formula.clear
         }
