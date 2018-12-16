@@ -33,7 +33,7 @@ def search():
 
 @app.route('/codesearch', methods=['GET'])
 def codesearch():
-    searcher = WeightedSearcher('config.toml')
+    searcher = WeightedSearcher('weighted_config.toml')
     args = flask.request.args
     logger.info(args)
     argLst = args.getlist('query')

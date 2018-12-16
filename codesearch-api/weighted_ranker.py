@@ -5,12 +5,61 @@ class CodeRanker(metapy.index.RankingFunction):
     def __init__(self, default_ranker):
         self.default_ranker = default_ranker
         all_keywords = [
-            # Java
+            # Java Reserved words
             "abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class", "const", "continue",
             "default", "double", "do", "else", "enum", "extends", "false", "final", "finally", "float", "for", "goto",
             "if", "implements", "import", "instanceof", "int", "interface", "long", "native", "new", "null", "package",
             "private", "protected", "public", "return", "short", "static", "strictfp", "super", "switch",
             "synchronized", "this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while", "double",
+            # java.io objects
+            "Closeable", "DataInput", "DataOutput", "Externalizable", "FileFilter", "FilenameFilter", "Flushable",
+            "ObjectInput", "ObjectInputValidation", "ObjectOutput", "ObjectStreamConstants", "Serializable",
+            "BufferedInputStream", "BufferedOutputStream", "BufferedReader", "BufferedWriter", "ByteArrayInputStream",
+            "ByteArrayOutputStream", "CharArrayReader", "CharArrayWriter", "Console", "DataInputStream",
+            "DataOutputStream", "File", "FileDescriptor", "FileInputStream", "FileOutputStream", "FilePermission",
+            "FileReader", "FileWriter", "FilterInputStream", "FilterOutputStream", "FilterReader", "FilterWriter",
+            "InputStream", "InputStreamReader", "LineNumberInputStream", "LineNumberReader", "ObjectInputStream",
+            "ObjectInputStream.GetField", "ObjectOutputStream", "ObjectOutputStream.PutField", "ObjectStreamClass",
+            "ObjectStreamField", "OutputStream", "OutputStreamWriter", "PipedInputStream", "PipedOutputStream",
+            "PipedReader", "PipedWriter", "PrintStream", "PrintWriter", "PushbackInputStream", "PushbackReader",
+            "RandomAccessFile", "Reader", "SequenceInputStream", "SerializablePermission", "StreamTokenizer",
+            "StringBufferInputStream", "StringReader", "StringWriter", "Writer", "CharConversionException",
+            "EOFException", "FileNotFoundException", "InterruptedIOException", "InvalidClassException",
+            "InvalidObjectException", "IOException", "NotActiveException", "NotSerializableException",
+            "ObjectStreamException", "OptionalDataException", "StreamCorruptedException", "SyncFailedException",
+            "UnsupportedEncodingException", "UTFDataFormatException", "WriteAbortedException", "IOError",
+            # java.lang objects
+            "Appendable", "AutoCloseable", "CharSequence", "Cloneable", "Comparable", "Iterable", "Readable",
+            "Runnable", "Thread.UncaughtExceptionHandler", "Boolean", "Byte", "Character", "Character.Subset",
+            "Character.UnicodeBlock", "Class", "ClassLoader", "ClassValue", "Compiler", "Double", "Enum", "Float",
+            "InheritableThreadLocal", "Integer", "Long", "Math", "Number", "Object", "Package", "Process",
+            "ProcessBuilder", "ProcessBuilder.Redirect", "Runtime", "RuntimePermission", "SecurityManager", "Short",
+            "StackTraceElement", "StrictMath", "String", "StringBuffer", "StringBuilder", "System", "Thread",
+            "ThreadGroup", "ThreadLocal", "Throwable", "Void", "Character.UnicodeScript",
+            "ProcessBuilder.Redirect.Type", "Thread.State", "ArithmeticException", "ArrayIndexOutOfBoundsException",
+            "ArrayStoreException", "ClassCastException", "ClassNotFoundException", "CloneNotSupportedException",
+            "EnumConstantNotPresentException", "Exception", "IllegalAccessException", "IllegalArgumentException",
+            "IllegalMonitorStateException", "IllegalStateException", "IllegalThreadStateException",
+            "IndexOutOfBoundsException", "InstantiationException", "InterruptedException", "NegativeArraySizeException",
+            "NoSuchFieldException", "NoSuchMethodException", "NullPointerException", "NumberFormatException",
+            "ReflectiveOperationException", "RuntimeException", "SecurityException", "StringIndexOutOfBoundsException",
+            "TypeNotPresentException", "UnsupportedOperationException", "AbstractMethodError", "AssertionError",
+            "BootstrapMethodError", "ClassCircularityError", "ClassFormatError", "Error", "ExceptionInInitializerError",
+            "IllegalAccessError", "IncompatibleClassChangeError", "InstantiationError", "InternalError", "LinkageError",
+            "NoClassDefFoundError", "NoSuchFieldError", "NoSuchMethodError", "OutOfMemoryError", "StackOverflowError",
+            "ThreadDeath", "UnknownError", "UnsatisfiedLinkError", "UnsupportedClassVersionError", "VerifyError",
+            "VirtualMachineError", "Deprecated", "Override", "SafeVarargs", "SuppressWarnings",
+            # java.sql objects
+            "Array", "Blob", "CallableStatement", "Clob", "Connection", "DatabaseMetaData", "Driver", "NClob",
+            "ParameterMetaData", "PreparedStatement", "Ref", "ResultSet", "ResultSetMetaData", "RowId", "Savepoint",
+            "SQLData", "SQLInput", "SQLOutput", "SQLXML", "Statement", "Struct", "Wrapper", "Date", "DriverManager",
+            "DriverPropertyInfo", "SQLPermission", "Time", "Timestamp", "Types", "ClientInfoStatus",
+            "PseudoColumnUsage", "RowIdLifetime", "BatchUpdateException", "DataTruncation", "SQLClientInfoException",
+            "SQLDataException", "SQLException", "SQLFeatureNotSupportedException",
+            "SQLIntegrityConstraintViolationException", "SQLInvalidAuthorizationSpecException",
+            "SQLNonTransientConnectionException", "SQLNonTransientException", "SQLRecoverableException",
+            "SQLSyntaxErrorException", "SQLTimeoutException", "SQLTransactionRollbackException",
+            "SQLTransientConnectionException", "SQLTransientException", "SQLWarning",
             # C
             "auto", "break", "case", "char", "const", "continue", "default", "do", "double", "else", "enum", "extern",
             "float", "for", "goto", "if", "inline", "int", "long", "register", "restrict", "return", "short", "signed",
@@ -116,7 +165,7 @@ class CodeRanker(metapy.index.RankingFunction):
     def score(self, idx, query, top_k):
 
         line = query.content()
-        weight = 2
+        weight = 8
 
         for word in self.keywords:
             if word in line:
