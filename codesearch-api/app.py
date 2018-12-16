@@ -26,7 +26,7 @@ def parse_query(query):
     remaining = str(query)
     modified_query = ""
     while len(remaining) > 0:
-        m = re.search(r'\$(.+?)\$', remaining)
+        m = re.search(r'\${1,2}(.+?)\${1,2}', remaining)
         if m:
             modified_query += remaining[:m.start()]
             csx_tokens = latex_to_csx(m.group(1))
