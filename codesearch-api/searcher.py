@@ -49,9 +49,8 @@ class Searcher:
 
 class WeightedSearcher(Searcher):
     def __init__(self, cfg):
-        self.default_ranker_ranker = CodeRanker(self.default_ranker)
         super(WeightedSearcher, self).__init__(cfg)
-
+        self.default_ranker = CodeRanker(self.default_ranker)
 
 class StubSearcher:
     def __init__(self, *args, **kwargs):
