@@ -48,8 +48,11 @@ object CsxEncoder {
     md.update(s.getBytes)
     val digest = md.digest
     val no1 = new BigInteger(1, digest)
-    val letters = no1.toString(16).toCharArray
-      .map(c => if (Character.isDigit(c)) (c + 'K' - '0').toChar else c)
+
+    var hd = no1.toString(16)
+    while ( hd.length() < 32 ) { hd = "0" + hd; } // pad with leading 0's
+    val letters = hd.toCharArray
+          .map(c => if (Character.isDigit(c)) (c + 'K' - '0').toChar else c)
     "CSX" + new String(letters).toUpperCase.substring(0, 5)
   }
 
