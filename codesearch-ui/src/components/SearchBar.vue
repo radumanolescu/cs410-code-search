@@ -2,13 +2,15 @@
   <div class="ui center aligned basic segment">
     <sui-form>
       <sui-form-field>
-        <sui-input
-          placeholder="Input search term here.  Use $$...$$ for formula search."
-          icon="search"
-          v-on:keydown.prevent.enter="onSearch"
-          :value="query"
-          @input="updateQuery"
-        />
+        <div class="ui action input">
+          <sui-input
+            placeholder="Input search term here.  Use $$...$$ for formula search."
+            v-on:keydown.prevent.enter="onSearch"
+            :value="query"
+            @input="updateQuery" />
+          <sui-button icon="superscript" color="green" v-on:click.prevent="onSearch">Formula</sui-button>
+          <sui-button icon="code" v-on:click.prevent="onCodeSearch">Code</sui-button>
+        </div>
         <sui-button-group
           class="latex-button-group"
           v-for="formula in predefinedFormulae"
@@ -57,6 +59,9 @@ export default {
     },
     onSearch: function(e) {
       this.$store.dispatch("search");
+    },
+    onCodeSearch: function(e) {
+      this.$store.dispatch("codesearch");
     },
     handleFormulaClick: function(formula) {
       let q = this.$store.state.query;
