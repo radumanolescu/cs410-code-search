@@ -25,6 +25,7 @@ Team members:
 * Next, install [docker-compose](https://docs.docker.com/compose/install/).  If you have python/pip, it's as simple as `pip install docker-compose`.
 * `cd` into the directory where `docker-compose.yml` is, and then:
 
+
     docker-compose up -d
 
 You can check the logs:
