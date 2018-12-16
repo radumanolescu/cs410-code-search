@@ -36,7 +36,7 @@ class Searcher:
         start = time.time()
         query = metapy.index.Document()
         query.content(request['query'])
-        ranker_id = request['ranker']
+        ranker_id = request.get('ranker', self.default_ranker)
         try:
             ranker = getattr(metapy.index, ranker_id)()
         except:

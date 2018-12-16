@@ -162,7 +162,7 @@ class CodeRanker(metapy.index.RankingFunction):
         seen_add = seen.add
         return [x for x in seq if not (x in seen or seen_add(x))]
 
-    def score(self, idx, query, top_k):
+    def score(self, idx, query, top_k=10):
 
         line = query.content()
         weight = 8
