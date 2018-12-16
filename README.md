@@ -65,7 +65,10 @@ Contributions
     * Implementation of Python searcher using metapy
 #### David K Landrith (dkl2@illinois.edu)
 * Backend
-    * Code search: remove programming language keywords from stop words, boost their ranking in the search engine
+    * Code search implementation
+      * Remove programming language keywords from stop words
+      * Implement ranker class to boost rankings of keywords from common programming languages in search engine (viz., Java, C, C++, Python, Ruby, PHP, Perl)
+      * Configuration to suit computer language keyword searching 
 
 Important files and directories
 =============
