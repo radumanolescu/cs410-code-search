@@ -61,7 +61,7 @@ export default {
       this.$store.dispatch("search");
     },
     onCodeSearch: function(e) {
-      this.$store.dispatch("codeSearch");
+      this.$store.dispatch("codesearch");
     },
     handleFormulaClick: function(formula) {
       let q = this.$store.state.query;
