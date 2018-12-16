@@ -22,6 +22,12 @@ class Searcher:
         self.idx = metapy.index.make_inverted_index(cfg)
         self.default_ranker = metapy.index.OkapiBM25()
 
+    def process_doc(self, doc_content):
+        return ' '.join([
+            t for t in doc_content.split(' ')
+            if not t.startswith('CSX')
+        ])
+
     def search(self, request):
         """
         Accept a JSON request and run the provided query with the specified
@@ -41,7 +47,7 @@ class Searcher:
             response['results'].append({
                 'score': float(result[1]),
                 'rating': float(result[1]),
-                'content': self.idx.metadata(result[0]).get('content'),
+                'content': self.process_doc(self.idx.metadata(result[0]).get('content')),
                 'matchedPositions': []
             })
         response['elapsed_time'] = time.time() - start

@@ -1,5 +1,10 @@
 <template>
-  <mathjax :formula="renderedText"></mathjax>
+  <div>
+    <span v-for="segment in textSegments" v-bind:key="segment.id">
+      <span v-if="segment.type === 'REGULAR'">{{ segment.text }}</span>
+      <span v-if="segment.type === 'MATH'"><mathjax :formula="segment.text"></mathjax></span>
+    </span>
+  </div>
 </template>
 
 <script>
@@ -12,6 +17,42 @@ export default {
     'mathjax': MathJax
   },
   computed: {
+    textSegments: function() {
+      const latexRe = /\$\$(.+?)\$\$|\$(.+?)\$/
+      const segments = []
+      let remainingText = new String(this.text)
+      let id = 0;
+      while (remainingText.length > 0) {
+        const match = latexRe.exec(remainingText)
+        if (match) {
+          console.log(match)
+          if (match.index >= 0) {
+            segments.push({
+              id,
+              text: remainingText.substring(0, match.index),
+              type: 'REGULAR'
+            })
+            id++
+          }
+          segments.push({
+            id,
+            text: match[0],
+            type: 'MATH'
+          })
+          id++
+          remainingText = remainingText.substring(match.index + match[0].length)
+        } else {
+          segments.push({
+            id,
+            text: remainingText,
+            type: 'REGULAR'
+          })
+          id++
+          remainingText = ""
+        }
+      }
+      return segments
+    },
     renderedText: function() {
       const result = [];
       let matchedPositions = this.matchedPositions
