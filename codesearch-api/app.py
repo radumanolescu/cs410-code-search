@@ -9,7 +9,6 @@ from searcher import WeightedSearcher
 logging.basicConfig(level='INFO')
 
 logger = logging.getLogger(__name__)
-searcher = Searcher('config.toml')
 
 app = flask.Flask(__name__)
 CORS(app)
@@ -23,6 +22,7 @@ def ping():
 
 @app.route('/search', methods=['GET'])
 def search():
+    searcher = Searcher('config.toml')
     args = flask.request.args
     logger.info(args)
     argLst = args.getlist('query')
@@ -39,5 +39,6 @@ def codesearch():
     argLst = args.getlist('query')
     q = ' '.join(argLst)
     logger.info(q)
+    logger.info("using the weighted query")
     query = { "query" : q, "ranker": "OkapiBM25"}
     return searcher.search(query)

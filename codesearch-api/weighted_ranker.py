@@ -108,7 +108,7 @@ class CodeRanker(metapy.index.RankingFunction):
 
         super(CodeRanker, self).__init__()
 
-    def f7(seq):
+    def f7(self, seq):
         seen = set()
         seen_add = seen.add
         return [x for x in seq if not (x in seen or seen_add(x))]
@@ -117,8 +117,6 @@ class CodeRanker(metapy.index.RankingFunction):
 
         line = query.content()
         weight = 2
-
-        duplicate_words = []
 
         for word in self.keywords:
             if word in line:
