@@ -23,17 +23,17 @@ Team members:
 
 * First you need to install [docker](https://docker.io) for your distribution.
 * Next, install [docker-compose](https://docs.docker.com/compose/install/).  If you have python/pip, it's as simple as `pip install docker-compose`.
-* `cd` into the directory where `docker-compose.yml` is, and then:
-
-
-    docker-compose up -d
-
-You can check the logs:
-
-    docker-compose logs
-
-After the containers are up, the API server will be available at `http://localhost:8081` and the UI will be available at `http://localhost:8080`.  You can change those values in the `docker-compose.yml` file.
-
+* Ensure that Docker is running and configured
+    * Start Docker (`sudo service docker start`)​
+    * If Docker is not configured, set the `DOCKER_HOST` environment variable to your computer (`export DOCKER_HOST=127.0.0.1`)​
+* Download from GitHub: https://github.com/radumanolescu/cs410-code-search/archive/master.zip​
+* Unzip downloaded file (`unzip cs410-code-search-master.zip`)​
+* Go to directory containing docker-compose.yml (`cd cs410-code-search-master`)​
+* Build the services (`docker-compose build`)​
+* Start application with Docker-Compose (`docker-compose up -d`)​
+* Go to the web application using a web browser with port 8080 (http://localhost:8080/)​
+* Use the API via port 8081 (e.g., http://localhost:8081/search?query=test)​
+* View logs when needed using Docker-Compose (`docker-compose logs`)​
 This docker-compose file is using volume mounting so the code change in the local folder will be reflected in the container, however, you need to restart the containers in order to make those changes take effect:
 
     docker-compose restart
