@@ -4,11 +4,11 @@ prefix = "."
 stop-words = "stopwords.txt"
 
 # Directory for input data
-dataset = "stackexchange"
+dataset = "mathexchange"
 # Corpus configuration file: $dataset/$corpus
 corpus = "line.toml"
 # Directory for the index
-index = "idx"
+index = "math_idx"
 
 uninvert = true # create the forward index by un-inverting the
                 # inverted index; can save some processing time

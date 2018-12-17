@@ -4,7 +4,7 @@ prefix = "."
 stop-words = "stopwords.txt"
 
 # Directory for input data
-dataset = "stackexchange"
+dataset = "stackoverflow"
 # Corpus configuration file: $dataset/$corpus
 corpus = "line.toml"
 # Directory for the index
