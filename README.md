@@ -74,12 +74,15 @@ Important files and directories
 =============
 #### ./codesearch-api
 * Website back end, contains Python code to search in the MeTA index
-#### ./codesearch-api/idx/inv
+* searcher.py - classes to search the MeTA indexes
+    * class Searcher to search in the Math Exchange corpus
+    * class WeightedSearcher to search in the Stack Overflow corpus
+#### ./codesearch-api/math_idx/inv, ./codesearch-api/weighted_idx/inv
 * MeTA inverted index. If you make changes to the corpus or the config file, remove this directory. It will be re-generated when needed.
-#### ./codesearch-api/stackexchange
+#### ./codesearch-api/mathexchange, ./codesearch-api/stackoverflow
 * Contains the corpus and files that can be used to test and debug the site
     * line.toml - File describing the corpus
-    * stackexchange.dat - MeTA line format corpus
+    * mathexchange.dat, stackoveflow.dat - MeTA line format corpus
     * SampleFormulas.txt - sample LaTeX formulas known to exist in the corpus
     * FormulasCsxJava.txt, FormulasCsxPython.txt - CSX encodings of the formulas from SampleFormulas.txt, done through pre-processor and search engine. Must be identical.
 #### ./codesearch-ui
