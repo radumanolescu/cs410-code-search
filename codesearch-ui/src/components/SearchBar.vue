@@ -10,6 +10,7 @@
             @input="updateQuery" />
           <sui-button icon="superscript" color="green" v-on:click.prevent="onSearch">Formula</sui-button>
           <sui-button icon="code" v-on:click.prevent="onCodeSearch">Code</sui-button>
+          <sui-button icon="eraser" color="blue" v-on:click.prevent="handleClear">Clear</sui-button>
         </div>
         Sample Formulae
         <sui-button-group
@@ -69,6 +70,9 @@ export default {
       let q = this.$store.state.query;
       q = `${q} ${formula}`
       this.updateQuery(q);
+    },
+    handleClear: function() {
+      this.updateQuery('');
     }
   }
 };
